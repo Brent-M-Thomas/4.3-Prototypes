@@ -139,18 +139,15 @@ console.assert(dontTellNobody.squeal() === mySecret, 'Tell a secret when you `sq
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
 function Key() {
-  function GiveMeAKey() {
-    return Key;
-  }
 }
 
-function Safe(data1, Key) {
-  function unlock() {
-    if (GiveMeAKey === Key) {
+function Safe(data1, key) {
+  this.unlock = function(testKey) {
+    if (testKey === key) {
       return data1;
     } else
       return 'Invalid key. Alarm triggered.';
-  }
+  };
 }
 
 // -- ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ -- //
